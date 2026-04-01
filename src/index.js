@@ -18,12 +18,10 @@ const __dirname = path.resolve();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: ["https://tunichatt.onrender.com"],
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: ["https://tunifrontend.onrender.com"], // your frontend URL
+  credentials: true,
+}));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
