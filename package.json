@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
-    "build": "bash build.sh"
+    "build": "node build.js",
+    "postinstall": "node build.js"
   },
   "keywords": [],
   "author": "",
