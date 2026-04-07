@@ -16,8 +16,10 @@ const __dirname = path.resolve();
 // Updated CORS configuration
 app.use(cors({
   origin: [
-    "https://tunichatt.onrender.com", // Replace with your frontend URL
-    "http://localhost:5173" // For local development
+    "https://tunibackend.onrender.com", // Production frontend on same domain
+    "https://tunichatt.onrender.com", // Alternative frontend domain
+    "http://localhost:5173", // For local development
+    "http://localhost:3000" // Alternative dev port
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
