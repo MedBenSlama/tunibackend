@@ -33,10 +33,17 @@ app.use("/api/messages", messageRoutes);
 
 // Serve static files in production
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+  const distPath = path.join(__dirname, "./frontend/dist");
+  app.use(express.static(distPath));
   
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+    const indexPath = path.join(distPath, "index.html");
+    res.sendFile(indexPath, (err) => {
+      if (err) {
+        console.error("Error serving index.html:", err);
+        res.status(404).send("Not found");
+      }
+    });
   });
 }
 
