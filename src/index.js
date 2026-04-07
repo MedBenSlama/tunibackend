@@ -33,21 +33,8 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-// Serve static files in production
-if (process.env.NODE_ENV === "production") {
-  const distPath = path.join(__dirname, "../frontend/dist");
-  app.use(express.static(distPath));
-  
-  app.get("*", (req, res) => {
-    const indexPath = path.join(distPath, "index.html");
-    res.sendFile(indexPath, (err) => {
-      if (err) {
-        console.error("Error serving index.html:", err);
-        res.status(404).send("Not found");
-      }
-    });
-  });
-}
+// Note: Frontend is now served separately from tunibackend.onrender.com
+// This backend only handles API requests
 
 // Error handling middleware
 app.use((err, req, res, next) => {
