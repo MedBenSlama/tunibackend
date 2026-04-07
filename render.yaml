@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: tunibackend
+    env: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        scope: secret
+      - key: JWT_SECRET
+        scope: secret
+      - key: CLOUDINARY_CLOUD_NAME
+        scope: secret
+      - key: CLOUDINARY_API_KEY
+        scope: secret
+      - key: CLOUDINARY_API_SECRET
+        scope: secret
+      - key: PORT
+        value: "10000"
